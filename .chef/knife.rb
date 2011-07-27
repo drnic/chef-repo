@@ -10,7 +10,7 @@ knife[:identity_file]         = '~/.ec2/id_rsa-ec2'
 knife[:aws_ssh_key_id]        = ENV['AWS_SSH_KEY_ID'] || 'drnic'
 knife[:availability_zone]     = 'eu-east-1a'
 knife[:region]                = 'eu-east-1'
-knife[:aws_image_id]          = 'ami-da0cf8b3'
+knife[:aws_image_id]          = 'ami-a403f7cd' # http://aws.amazon.com/amis/Community/4347
 
 log_level                :info
 log_location             STDOUT
