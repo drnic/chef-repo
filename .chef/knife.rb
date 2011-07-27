@@ -1,7 +1,17 @@
 current_dir = File.dirname(__FILE__)
 user        = ENV['OPSCODE_USER'] || ENV['USER']
-orgname     = ENV['OPSCODE_ORGNAME'] || ENV['ORGNAME'] || "#{user}-test"
+ENV['ORGNAME'] ||= (ENV['OPSCODE_ORGNAME'] || "#{user}-test")
+orgname     = ENV['ORGNAME']
 chef_home   = "#{ENV['HOME']}/.chef"
+
+knife[:aws_access_key_id]     = ENV['AWS_ACCESS_KEY_ID'] || Fog.credentials[:aws_access_key_id]
+knife[:aws_secret_access_key] = ENV['AWS_SECRET_ACCESS_KEY'] || Fog.credentials[:aws_secret_access_key]
+knife[:identity_file]         = '~/.ec2/id_rsa-ec2'
+knife[:aws_ssh_key_id]        = ENV['AWS_SSH_KEY_ID'] || 'drnic'
+knife[:availability_zone]     = 'eu-east-1a'
+knife[:region]                = 'eu-east-1'
+knife[:aws_image_id]          = 'ami-da0cf8b3'
+
 log_level                :info
 log_location             STDOUT
 node_name                user
